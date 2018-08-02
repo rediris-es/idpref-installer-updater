@@ -1,0 +1,35 @@
+{
+    "name": "simplesamlphp/simplesamlphp",
+    "description": "Instalación de SimpleSAMLphp junto con los paquetes de REDIRIS para la instalación del IDP",
+    "version": "v0.1",
+    "type": "project",
+    "keywords": [ "saml2", "rediris","oauth","ws-federation","sp","idp", "simplesamlphp" ],
+    "homepage": "https://wiki.rediris.es/SIR2/IdP_de_referencia",
+    "license": "LGPL-2.1-or-later",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Adrian Gomez",
+            "email": "adriangomez@memorandum.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+		"ComposerScript\\Installer" : ""
+	 }
+    },
+    "require": {
+	"rediris-es/simplesamlphp-module-idpinstaller": "*",
+        "mimaen/simplesamlphp-module-hubandspoke": "dev-master",
+        "rediris-es/simplesamlphp-module-sir2skin": "*"
+    },
+    "support": {
+        "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
+        "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
+    },
+    "scripts": {
+	"post-install-cmd": "ComposerScript\\Installer::postInstall",
+	"post-update-cmd": "ComposerScript\\Installer::postUpdate"
+    }
+
+}
