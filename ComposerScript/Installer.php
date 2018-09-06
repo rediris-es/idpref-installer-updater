@@ -23,8 +23,10 @@ class Installer
 			self::rm_r('simplesamlphp');
 		}
 
-    	shell_exec('composer create-project composer create-project --prefer-dist --stability=dev simplesamlphp/simplesamlphp:dev-Xnew-ui');
-		self::rm_r('vendor');
+    	//shell_exec('composer create-project composer create-project --prefer-dist --stability=dev simplesamlphp/simplesamlphp:dev-Xnew-ui');
+		//self::rm_r('vendor');
+		rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
+		rename('./vendor','./simplesamlphp/vendor');
 		
 		if (!file_exists('simplesamlphp/cert')) {
 			mkdir('simplesamlphp/cert');
@@ -44,10 +46,10 @@ class Installer
 		copy("simplesamlphp/config-templates/config.php", "simplesamlphp/config/config.php");
 		chmod("simplesamlphp/metadata/saml20-idp-hosted.php", $filePermissions);
 		chmod("simplesamlphp/metadata/saml20-sp-remote.php", $filePermissions);
-		self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
-		self::copy_r("modules/hubandspoke", "simplesamlphp/modules/hubandspoke");
-		self::copy_r("modules/sir2skin", "simplesamlphp/modules/sir2skin");
-		self::rm_r('modules');
+		//self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
+		//self::copy_r("modules/hubandspoke", "simplesamlphp/modules/hubandspoke");
+		//self::copy_r("modules/sir2skin", "simplesamlphp/modules/sir2skin");
+		//self::rm_r('modules');
 		self::chmod_r("simplesamlphp/modules", $folderPermissions);
 
 		if (file_exists('simplesamlphp/modules/hubandspoke/default-disable')) {
@@ -74,7 +76,7 @@ class Installer
 		}
 		
 		self::chmod_r("simplesamlphp/cert", $folderPermissions);
-		self::chown_r('simplesamlphp', $apacheUser, $apacheGroup);
+		//self::chown_r('simplesamlphp', $apacheUser, $apacheGroup);
     }
 
     private static function downloadAndWriteConfig()

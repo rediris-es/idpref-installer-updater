@@ -18,7 +18,7 @@
          }
     },
     "require": {
-        "simplesamlphp/simplesamlphp": "1.14.*",
+        "simplesamlphp/simplesamlphp": "*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master",
         "rediris-es/simplesamlphp-module-sir2skin": "*"
@@ -26,6 +26,11 @@
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
         "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
+    },
+    "scripts": {
+        "post-install-cmd": "ComposerScript\\Installer::postInstall",
+        "post-update-cmd": "ComposerScript\\Installer::postUpdate"
     }
+
 
 }
