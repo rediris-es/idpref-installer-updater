@@ -6,7 +6,6 @@
     "keywords": [ "saml2", "rediris","oauth","ws-federation","sp","idp", "simplesamlphp" ],
     "homepage": "https://wiki.rediris.es/SIR2/IdP_de_referencia",
     "license": "LGPL-2.1-or-later",
-    "prefer-stable": true,
     "authors": [
         {
             "name": "Adrian Gomez",
