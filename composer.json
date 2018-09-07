@@ -21,9 +21,6 @@
         "simplesamlphp/simplesamlphp": "*",
         "sgomez/simplesamlphp-base-module-install": "^1.0",
         "sgomez/simplesamlphp-scripts-base": "^1.1",
-        "rediris-es/simplesamlphp-module-idpinstaller": "*",
-        "mimaen/simplesamlphp-module-hubandspoke": "dev-master",
-        "rediris-es/simplesamlphp-module-sir2skin": "*"
     },
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
@@ -32,6 +29,12 @@
     "scripts": {
         "post-package-install": [
             "Sgomez\\SimpleSamlPhp\\Composer\\ScriptHandler::installModuleHook"
+        ],
+        "post-package-update": [
+            "Sgomez\\SimpleSamlPhp\\Composer\\ScriptHandler::installModuleHook"
+        ],
+        "pre-package-uninstall": [
+            "Sgomez\\SimpleSamlPhp\\Composer\\ScriptHandler::uninstallModuleHook"
         ]
     }
 
