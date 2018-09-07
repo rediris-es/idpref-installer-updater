@@ -18,25 +18,11 @@
          }
     },
     "require": {
-        "simplesamlphp/simplesamlphp": "*",
-        "sgomez/simplesamlphp-base-module-install": "^1.0",
-        "sgomez/simplesamlphp-scripts-base": "^1.1"
+        "simplesamlphp/simplesamlphp": "*"
     },
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
         "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
-    },
-    "scripts": {
-        "post-package-install": [
-            "Sgomez\\SimpleSamlPhp\\Composer\\ScriptHandler::installModuleHook"
-        ],
-        "post-package-update": [
-            "Sgomez\\SimpleSamlPhp\\Composer\\ScriptHandler::installModuleHook"
-        ],
-        "pre-package-uninstall": [
-            "Sgomez\\SimpleSamlPhp\\Composer\\ScriptHandler::uninstallModuleHook"
-        ]
     }
-
 
 }
