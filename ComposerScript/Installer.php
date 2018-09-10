@@ -19,9 +19,9 @@ class Installer
 
     private static function configureSimpleSAMLphp()
     {
-    	if (file_exists('simplesamlphp')) {
+    	/*if (file_exists('simplesamlphp')) {
 			self::rm_r('simplesamlphp');
-		}
+		}*/
 
     	//shell_exec('composer create-project composer create-project --prefer-dist --stability=dev simplesamlphp/simplesamlphp:dev-Xnew-ui');
 		//self::rm_r('vendor');
