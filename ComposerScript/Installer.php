@@ -32,16 +32,16 @@ class Installer
 			mkdir('simplesamlphp/cert');
 		}
 
-		if (!file_exists('vendor/simplesamlphp/simplesamlphp/config')) {
-			mkdir('vendor/simplesamlphp/simplesamlphp/config');
+		if (!file_exists('simplesamlphp/vendor/simplesamlphp/simplesamlphp/config')) {
+			mkdir('simplesamlphp/vendor/simplesamlphp/simplesamlphp/config');
 		}
 
-		if (!file_exists('vendor/simplesamlphp/simplesamlphp/metadata')) {
-			mkdir('vendor/simplesamlphp/simplesamlphp/metadata');
+		if (!file_exists('simplesamlphp/vendor/simplesamlphp/simplesamlphp/metadata')) {
+			mkdir('simplesamlphp/vendor/simplesamlphp/simplesamlphp/metadata');
 		}
 
-		if (!file_exists('vendor/simplesamlphp/simplesamlphp/cache')) {
-			mkdir('vendor/simplesamlphp/simplesamlphp/cache');
+		if (!file_exists('simplesamlphp/vendor/simplesamlphp/simplesamlphp/cache')) {
+			mkdir('simplesamlphp/vendor/simplesamlphp/simplesamlphp/cache');
 		}
 
 		$apacheUser = exec('ps axo user | grep apache | grep -v root | uniq');
