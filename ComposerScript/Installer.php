@@ -28,20 +28,20 @@ class Installer
 		//rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
 		//rename('./vendor','./simplesamlphp/vendor');
 		
-		if (!file_exists('vendor/simplesamlphp/simplesamlphp/cert')) {
-			mkdir('vendor/simplesamlphp/simplesamlphp/cert');
+		if (!file_exists('cert')) {
+			mkdir('cert');
 		}
 
-		if (!file_exists('vendor/simplesamlphp/simplesamlphp/config')) {
-			mkdir('vendor/simplesamlphp/simplesamlphp/config');
+		if (!file_exists('config')) {
+			mkdir('config');
 		}
 
-		if (!file_exists('vendor/simplesamlphp/simplesamlphp/metadata')) {
-			mkdir('vendor/simplesamlphp/simplesamlphp/metadata');
+		if (!file_exists('metadata')) {
+			mkdir('metadata');
 		}
 
-		if (!file_exists('vendor/simplesamlphp/simplesamlphp/cache')) {
-			mkdir('vendor/simplesamlphp/simplesamlphp/cache');
+		if (!file_exists('cache')) {
+			mkdir('cache');
 		}
 
 		$apacheUser = exec('ps axo user | grep apache | grep -v root | uniq');

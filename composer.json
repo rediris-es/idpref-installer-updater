@@ -20,6 +20,11 @@
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
         "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
+    },
+    "scripts": {
+        "post-create-project-cmd": "vendor\\ComposerScript\\Installer::postInstall",
+        "post-install-cmd": "vendor\\ComposerScript\\Installer::postInstall",
+        "post-update-cmd": "vendor\\ComposerScript\\Installer::postUpdate"
     }
 
 }
