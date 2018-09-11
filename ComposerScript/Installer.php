@@ -28,8 +28,8 @@ class Installer
 		//rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
 		//rename('./vendor','./simplesamlphp/vendor');
 		
-		if (!file_exists('cert')) {
-			mkdir('cert');
+		if (!file_exists('vendor/simplesamlphp/simplesamlphp/cert')) {
+			mkdir('vendor/simplesamlphp/simplesamlphp/cert');
 		}
 
 		if (!file_exists('vendor/simplesamlphp/simplesamlphp/config')) {

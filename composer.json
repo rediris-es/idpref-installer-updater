@@ -18,10 +18,14 @@
     },
     "type": "project",
     "require": {
+        "composer/installers": "~1.0",
         "simplesamlphp/simplesamlphp": "*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master",
         "rediris-es/simplesamlphp-module-sir2skin": "*"
+    },
+    "installer-paths": {
+        "./simplesamlphp/": ["simplesamlphp/simplesamlphp"]
     },
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
