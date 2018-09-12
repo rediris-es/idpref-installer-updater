@@ -25,14 +25,29 @@
         "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
     },
     "scripts": {
-        "post-create-project-cmd": "touch hello1.txt",
+        "pre-install-cmd" : "touch hello1.txt",
         "post-install-cmd": "touch hello2.txt",
-        "post-update-cmd": "touch hello3.txt",
-        "post-root-package-install": "touch hello4.txt",
-        "post-dependencies-solving": "touch hello5.txt",
-        "post-package-update": "touch hello6.txt",
-        "post-package-install": "touch hello7.txt",
-        "post-package-update": "touch hello8.txt"
+        "pre-update-cmd" : "touch hello3.txt",
+        "post-update-cmd": "touch hello4.txt",
+        "post-status-cmd" : "touch hello5.txt",
+        "pre-archive-cmd" : "touch hello6.txt",
+        "post-archive-cmd" : "touch hello7.txt",
+        "pre-autoload-dump" : "touch hello8.txt",
+        "post-autoload-dump" : "touch hello9.txt",
+        "post-root-package-install": "touch hello10.txt",
+        "post-create-project-cmd": "touch hello11.txt",
+        "pre-dependencies-solving" : "touch hello12.txt",
+        "post-dependencies-solving": "touch hello13.txt",
+        "pre-package-install" : "touch hello14.txt",
+        "post-package-install": "touch hello15.txt",
+        "pre-package-update": "touch hello16.txt",
+        "post-package-update": "touch hello17.txt",
+        "pre-package-uninstall" : "touch hello18.txt",
+        "post-package-uninstall" : "touch hello19.txt",
+        "init" : "touch hello20.txt",
+        "command" : "touch hello21.txt",
+        "pre-file-download" : "touch hello22.txt",
+        "pre-command-run" : "touch hello23.txt"
     }
 
 }
