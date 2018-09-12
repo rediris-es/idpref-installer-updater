@@ -24,7 +24,12 @@
     "scripts": {
         "post-create-project-cmd": "touch hello1.txt",
         "post-install-cmd": "touch hello2.txt",
-        "post-update-cmd": "touch hello3.txt"
+        "post-update-cmd": "touch hello3.txt",
+        "post-root-package-install": "touch hello4.txt",
+        "post-dependencies-solving": "touch hello5.txt",
+        "post-package-update": "touch hello6.txt",
+        "post-package-install": "touch hello7.txt",
+        "post-package-update": "touch hello8.txt"
     }
 
 }
