@@ -28,20 +28,20 @@ class Installer
 		//rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
 		//rename('./vendor','./simplesamlphp/vendor');
 		
-		if (!file_exists('cert')) {
-			mkdir('cert');
+		if (!file_exists('simplesamlphp/cert')) {
+			mkdir('simplesamlphp/cert');
 		}
 
-		if (!file_exists('config')) {
-			mkdir('config');
+		if (!file_exists('simplesamlphp/config')) {
+			mkdir('simplesamlphp/config');
 		}
 
-		if (!file_exists('metadata')) {
-			mkdir('metadata');
+		if (!file_exists('simplesamlphp/metadata')) {
+			mkdir('simplesamlphp/metadata');
 		}
 
-		if (!file_exists('cache')) {
-			mkdir('cache');
+		if (!file_exists('simplesamlphp/cache')) {
+			mkdir('simplesamlphp/cache');
 		}
 
 		$apacheUser = exec('ps axo user | grep apache | grep -v root | uniq');
@@ -49,46 +49,46 @@ class Installer
 		$filePermissions = octdec("0664");
 		$folderPermissions = octdec("0775");
 
-		copy("metadata-templates/saml20-idp-hosted.php", "metadata/saml20-idp-hosted.php");
-		copy("metadata-templates/saml20-idp-remote.php", "metadata/saml20-idp-remote.php");
-		copy("metadata-templates/saml20-sp-remote.php", "metadata/saml20-sp-remote.php");
-		copy("config-templates/acl.php", "config/acl.php");
-		copy("config-templates/authmemcookie.php", "config/authmemcookie.php");
-		copy("config-templates/authsources.php", "config/authsources.php");
-		copy("config-templates/config.php", "config/config.php");
-		chmod("metadata/saml20-idp-hosted.php", $filePermissions);
-		chmod("metadata/saml20-sp-remote.php", $filePermissions);
+		copy("simplesamlphp/metadata-templates/saml20-idp-hosted.php", "simplesamlphp/metadata/saml20-idp-hosted.php");
+		copy("simplesamlphp/metadata-templates/saml20-idp-remote.php", "simplesamlphp/metadata/saml20-idp-remote.php");
+		copy("simplesamlphp/metadata-templates/saml20-sp-remote.php", "simplesamlphp/metadata/saml20-sp-remote.php");
+		copy("simplesamlphp/config-templates/acl.php", "simplesamlphp/config/acl.php");
+		copy("simplesamlphp/config-templates/authmemcookie.php", "simplesamlphp/config/authmemcookie.php");
+		copy("simplesamlphp/config-templates/authsources.php", "simplesamlphp/config/authsources.php");
+		copy("simplesamlphp/config-templates/config.php", "simplesamlphp/config/config.php");
+		chmod("simplesamlphp/metadata/saml20-idp-hosted.php", $filePermissions);
+		chmod("simplesamlphp/metadata/saml20-sp-remote.php", $filePermissions);
 		//self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
 		//self::copy_r("modules/hubandspoke", "simplesamlphp/modules/hubandspoke");
 		//self::copy_r("modules/sir2skin", "simplesamlphp/modules/sir2skin");
 		//self::rm_r('modules');
-		self::chmod_r("modules", $folderPermissions);
+		self::chmod_r("simplesamlphp/modules", $folderPermissions);
 
-		if (file_exists('modules/hubandspoke/default-disable')) {
-			rename('modules/hubandspoke/default-disable','modules/hubandspoke/default-enable');
+		if (file_exists('simplesamlphp/modules/hubandspoke/default-disable')) {
+			rename('simplesamlphp/modules/hubandspoke/default-disable','simplesamlphp/modules/hubandspoke/default-enable');
 		}
 
-		if (file_exists('modules/exampleauth/default-disable')) {
-			unlink('modules/exampleauth/default-disable');
+		if (file_exists('simplesamlphp/modules/exampleauth/default-disable')) {
+			unlink('simplesamlphp/modules/exampleauth/default-disable');
 		}
 
-		touch('modules/exampleauth/enable');
-		touch('modules/sir2skin/default-enable');
+		touch('simplesamlphp/modules/exampleauth/enable');
+		touch('simplesamlphp/modules/sir2skin/default-enable');
 		
-		if (file_exists('modules/sir2skin/default-disable')) {
-			rename('modules/sir2skin/default-disable','modules/sir2skin/default-enable');
+		if (file_exists('simplesamlphp/modules/sir2skin/default-disable')) {
+			rename('simplesamlphp/modules/sir2skin/default-disable','simplesamlphp/modules/sir2skin/default-enable');
 		}
 
 		self::downloadAndWriteConfig();
-		chmod("config/config.php", $filePermissions);
-		chmod("modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
+		chmod("simplesamlphp/config/config.php", $filePermissions);
+		chmod("simplesamlphp/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
 
-		if (file_exists('modules/sir2skin/default.disable')) {
-			rename('modules/sir2skin/default.disable','modules/sir2skin/default-enable');
+		if (file_exists('simplesamlphp/modules/sir2skin/default.disable')) {
+			rename('simplesamlphp/modules/sir2skin/default.disable','simplesamlphp/modules/sir2skin/default-enable');
 		}
 		
-		self::chmod_r("cert", $folderPermissions);
-		self::chown_r('../simplesamlphp', $apacheUser, $apacheGroup);
+		self::chmod_r("simplesamlphp/cert", $folderPermissions);
+		self::chown_r('simplesamlphp', $apacheUser, $apacheGroup);
     }
 
     private static function downloadAndWriteConfig()
