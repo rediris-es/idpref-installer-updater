@@ -40,7 +40,7 @@
     },
     "extra":{
         "installer-paths":{
-          "./simplesamlphp/": ["simplesamlphp/simplesamlphp"]
+          "./": ["simplesamlphp/simplesamlphp"]
         }
     },
     "support": {
