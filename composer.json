@@ -16,23 +16,9 @@
             "ComposerScript\\Installer" : ""
          }
     },
-    "target-dir": "simple",
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-              "name": "simplesamlphp/simplesamlphp",
-              "version": "1.15.4",
-              "source": {
-                "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                "type": "git",
-                "reference": "tags/v1.15.4"
-              }
-            }
-        }
-    ],
     "require": {
         "php": ">=5.4",
+        "simplesamlphp/simplesamlphp": "*",
         "mnsami/composer-custom-directory-installer": "1.1.*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
