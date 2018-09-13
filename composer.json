@@ -16,9 +16,15 @@
             "ComposerScript\\Installer" : ""
          }
     },
+    "target-dir": "simplesamlphp",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/simplesamlphp/simplesamlphp"
+        },
+    ],
     "require": {
         "php": ">=5.4",
-        "simplesamlphp/simplesamlphp": "*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
