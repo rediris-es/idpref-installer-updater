@@ -103,7 +103,7 @@ class Installer
 		
 		curl_close ($ch);
 
-		file_put_contents('config/config.php', $result);
+		file_put_contents('simplesamlphp/config/config.php', $result);
 
     }
 
