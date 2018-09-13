@@ -16,6 +16,7 @@
             "ComposerScript\\Installer" : ""
          }
     },
+    "target-dir": "simple",
     "repositories": [
         {
             "type": "package",
