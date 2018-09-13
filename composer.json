@@ -19,8 +19,15 @@
     "target-dir": "simplesamlphp",
     "repositories": [
         {
-            "type": "git",
-            "url": "https://github.com/simplesamlphp/simplesamlphp.git"
+            "type": "package",
+            "package": {
+                "name": "simplesamlphp/simplesamlphp",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/simplesamlphp/simplesamlphp.git"
+                }
+                
+            }
         }
     ],
     "require": {
