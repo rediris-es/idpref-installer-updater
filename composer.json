@@ -16,17 +16,16 @@
             "ComposerScript\\Installer" : ""
          }
     },
-    "target-dir": "simplesamlphp",
     "repositories": [
         {
             "type": "package",
             "package": {
                 "name": "simplesamlphp/simplesamlphp",
+                "version": "1.16.1",
                 "source": {
                     "type": "git",
                     "url": "https://github.com/simplesamlphp/simplesamlphp.git"
                 }
-                
             }
         }
     ],
@@ -36,7 +35,6 @@
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
     },
-    "type": "project",
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
         "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
