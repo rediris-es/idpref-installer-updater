@@ -22,11 +22,11 @@
             "type": "package",
             "package": {
               "name": "simplesamlphp/simplesamlphp",
-              "version": "master",
+              "version": "1.15.4",
               "source": {
                 "url": "https://github.com/simplesamlphp/simplesamlphp.git",
                 "type": "git",
-                "reference": "master"
+                "reference": "tags/v1.15.4"
               }
             }
         }
