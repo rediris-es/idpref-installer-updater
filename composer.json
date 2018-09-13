@@ -19,8 +19,8 @@
     "target-dir": "simplesamlphp",
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/simplesamlphp/simplesamlphp"
+            "type": "git",
+            "url": "https://github.com/simplesamlphp/simplesamlphp.git"
         }
     ],
     "require": {
