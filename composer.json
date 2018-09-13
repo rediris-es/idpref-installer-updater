@@ -23,8 +23,11 @@
                 "name": "simplesamlphp/simplesamlphp",
                 "version": "1.16.1",
                 "source": {
-                    "type": "git",
-                    "url": "https://github.com/simplesamlphp/simplesamlphp.git"
+                    "url": "https://github.com/simplesamlphp/simplesamlphp.git",
+                    "type": "git"
+                },
+                "autoload": {
+                    "classmap": ["libs/"]
                 }
             }
         }
