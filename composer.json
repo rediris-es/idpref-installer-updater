@@ -19,17 +19,15 @@
     "repositories": [
         {
             "type": "package",
-            "package": {
-                "name": "simplesamlphp/simplesamlphp",
-                "version": "1.16.1",
-                "source": {
-                    "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                    "type": "git"
-                },
-                "autoload": {
-                    "classmap": ["libs/"]
+            "package": [
+                {
+                    "name": "foo/bar",
+                    "version": "1.16.1",
+                    "type": "git",
+                    "url": "https://github.com/simplesamlphp/simplesamlphp.git"
+
                 }
-            }
+            ]
         }
     ],
     "require": {
