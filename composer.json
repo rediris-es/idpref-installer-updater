@@ -33,7 +33,6 @@
     "require": {
         "php": ">=5.4",
         "mnsami/composer-custom-directory-installer": "1.1.*",
-        "simplesamlphp/simplesamlphp": "1.15.4",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
