@@ -25,7 +25,7 @@
               "source": {
                 "url": "https://github.com/simplesamlphp/simplesamlphp.git",
                 "type": "git",
-                "reference": "origin/master"
+                "reference": "1.14.16"
               }
             }
         }
