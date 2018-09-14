@@ -16,7 +16,20 @@
             "ComposerScript\\Installer" : ""
          }
     },
-    
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+              "name": "simplesamlphp/simplesamlphp",
+              "version": "1.14.16",
+              "source": {
+                "url": "https://github.com/simplesamlphp/simplesamlphp.git",
+                "type": "git",
+                "reference": "origin/master"
+              }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.4",
         "mnsami/composer-custom-directory-installer": "1.1.*",
@@ -27,7 +40,7 @@
     },
     "extra":{
         "installer-paths":{
-          "./simplesamlphp": ["vendor/simplesamlphp/simplesamlphp"]
+          "./simplesamlphp": ["simplesamlphp/simplesamlphp"]
         }
     },
     "support": {
