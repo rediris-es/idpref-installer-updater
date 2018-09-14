@@ -27,7 +27,7 @@
     },
     "extra":{
         "installer-paths":{
-          "./simplesamlphp": ["simplesamlphp/simplesamlphp"]
+          "./simplesamlphp": ["vendor/simplesamlphp/simplesamlphp"]
         }
     },
     "support": {
