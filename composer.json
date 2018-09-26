@@ -28,10 +28,6 @@
         "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
     },
     "scripts": {
-        "post-create-project-cmd": [
-            "ComposerScript\\Installer::postInstall",
-            "composer dump-autoload --optimize"
-        ],
         "post-install-cmd": [
             "ComposerScript\\Installer::postInstall",
             "composer dump-autoload --optimize"
