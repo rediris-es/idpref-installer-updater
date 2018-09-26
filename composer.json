@@ -16,39 +16,30 @@
             "ComposerScript\\Installer" : ""
          }
     },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-              "name": "simplesamlphp/simplesamlphp",
-              "version": "1.14.16",
-              "source": {
-                "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                "type": "git",
-                "reference": "origin/master"
-              }
-            }
-        }
-    ],
     "require": {
         "php": ">=5.4",
+        "simplesamlphp/simplesamlphp": "*",
         "mnsami/composer-custom-directory-installer": "1.1.*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
-    },
-    "extra":{
-        "installer-paths":{
-          "./simplesamlphp": ["simplesamlphp/simplesamlphp"]
-        }
     },
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
         "source": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller"
     },
     "scripts": {
-        "post-create-project-cmd": "ComposerScript\\Installer::postInstall",
-        "post-install-cmd": "ComposerScript\\Installer::postInstall",
-        "post-update-cmd": "ComposerScript\\Installer::postUpdate"
+        "post-create-project-cmd": [
+            "ComposerScript\\Installer::postInstall",
+            "composer dump-autoload --optimize"
+        ],
+        "post-install-cmd": [
+            "ComposerScript\\Installer::postInstall",
+            "composer dump-autoload --optimize"
+        ],
+        "post-update-cmd": [
+            "ComposerScript\\Installer::postUpdate",
+            "composer dump-autoload --optimize"
+        ]
     }
 }
