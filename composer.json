@@ -30,11 +30,11 @@
     "scripts": {
         "post-install-cmd": [
             "ComposerScript\\Installer::postInstall",
-            "composer dump-autoload --optimize"
+            "composer dump-autoload -a"
         ],
         "post-update-cmd": [
             "ComposerScript\\Installer::postUpdate",
-            "composer dump-autoload --optimize"
+            "composer dump-autoload -a"
         ]
     }
 }
