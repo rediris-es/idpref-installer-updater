@@ -11,6 +11,7 @@
             "email": "adriangomez@memorandum.net"
         }
     ],
+
     "autoload": {
         "psr-0": {
             "ComposerScript\\Installer" : ""
@@ -30,11 +31,17 @@
     "scripts": {
         "post-install-cmd": [
             "ComposerScript\\Installer::postInstall",
-            "composer dump-autoload -a"
+            "composer dump-autoload -a",
+            "rm -rf vendor/",
+            "cd simplesamlphp",
+            "composer install"
         ],
         "post-update-cmd": [
             "ComposerScript\\Installer::postUpdate",
-            "composer dump-autoload -a"
+            "composer dump-autoload -a",
+            "rm -rf vendor/",
+            "cd simplesamlphp",
+            "composer install"
         ]
     }
 }
