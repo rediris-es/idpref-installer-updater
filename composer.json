@@ -19,6 +19,7 @@
     },
     "require": {
         "php": ">=5.4",
+        "ext-openssl": "*",
         "simplesamlphp/simplesamlphp": "1.16.1",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
