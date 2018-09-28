@@ -33,13 +33,13 @@
             "ComposerScript\\Installer::postInstall",
             "composer dump-autoload -a",
             "rm -rf vendor/",
-            "cd simplesamlphp:composer install"
+            "cd simplesamlphp;composer install"
         ],
         "post-update-cmd": [
             "ComposerScript\\Installer::postUpdate",
             "composer dump-autoload -a",
             "rm -rf vendor/",
-            "cd simplesamlphp:composer install"
+            "cd simplesamlphp;composer install"
         ]
     }
 }
