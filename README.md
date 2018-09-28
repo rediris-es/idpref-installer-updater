@@ -20,7 +20,7 @@ Finally, it can be configured globally to have the composer command in any direc
 
 In order to produce an initial installation, execute the following command:
 
-`composer install`
+`composer create-project rediris-es/idpref-installer-updater:dev-master ./`
 
 In your current directory a simplesamlphp directory will be created with the initial configuration to run the IdP installer within.
 
