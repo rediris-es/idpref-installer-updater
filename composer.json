@@ -19,7 +19,7 @@
     },
     "require": {
         "php": ">=5.4",
-        "simplesamlphp/simplesamlphp": "*",
+        "simplesamlphp/simplesamlphp": "1.16.1",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
