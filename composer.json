@@ -22,7 +22,7 @@
     "require": {
         "php": ">=5.4",
         "ext-openssl": "*",
-        "simplesamlphp/simplesamlphp": "1.15.4",
+        "simplesamlphp/simplesamlphp": "*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
