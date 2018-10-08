@@ -44,8 +44,8 @@ class Installer
 			mkdir('simplesamlphp/cache');
 		}
 
-		$apacheUser = exec('ps axo user | grep "apache|httpd" | grep -v root | uniq');
-		$apacheGroup = exec('ps axo group | grep "apache|httpd" | grep -v root | uniq');
+		$apacheUser = exec('grep "User " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
+		$apacheGroup = exec('grep "Group " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
 		$filePermissions = octdec("0664");
 		$folderPermissions = octdec("0775");
 
