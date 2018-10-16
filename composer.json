@@ -24,6 +24,7 @@
         "simplesamlphp/simplesamlphp": "*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
+        "rediris-es/simplesamlphp-module-updater": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
     },
     "support": {
