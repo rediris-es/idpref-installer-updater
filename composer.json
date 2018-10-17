@@ -25,7 +25,11 @@
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "rediris-es/simplesamlphp-module-updater": "*",
-        "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
+        "mimaen/simplesamlphp-module-hubandspoke": "dev-master",
+        "composer/composer": "dev-master"
+    },
+    "require-dev": {
+        "composer/composer": "dev-master"
     },
     "support": {
         "issues": "https://github.com/rediris-es/simplesamlphp-module-idpinstaller/issues",
