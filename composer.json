@@ -24,7 +24,7 @@
         "simplesamlphp/simplesamlphp": "1.15.4",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
-        "rediris-es/simplesamlphp-module-updater": "*",
+        "rediris-es/simplesamlphp-module-updater": "dev-master",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master",
         "composer/composer": "dev-master"
     },
@@ -44,7 +44,7 @@
         ],
         "post-update-cmd": [
         	"touch test.txt",
-		"ComposerScript\\Installer::postUpdate",
+		    "ComposerScript\\Installer::postUpdate",
             "composer dump-autoload -a",
             "rm -rf vendor/",
             "cd simplesamlphp;composer install;composer require composer/composer:dev-master"
