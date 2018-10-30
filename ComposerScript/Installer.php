@@ -14,7 +14,7 @@ class Installer
 
     public static function postUpdate(Event $event)
     {
-        self::configureSimpleSAMLphp();
+        self::updateSimpleSAMLphp();
     }
 
     public static function updateSimpleSAMLphp(){
