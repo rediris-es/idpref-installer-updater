@@ -14,10 +14,10 @@ class Installer
 
     public static function postUpdate(Event $event)
     {
-        self::updateSimpleSAMLphp();
+        self::configureSimpleSAMLphp();
     }
 
-    public static function updateSimpleSAMLphp(Event $event){
+    public static function updateSimpleSAMLphp(){
     	self::copy_r("vendor/simplesamlphp/simplesamlphp", "./simplesamlphp/");
     }
 
