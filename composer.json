@@ -44,8 +44,7 @@
         ],
         "post-update-cmd": [
         	"touch test.txt",
-        	"\\cp -r vendor/simplesamlphp/simplesamlphp/* ./simplesamlphp",
-            "ComposerScript\\Installer::postUpdate",
+		"ComposerScript\\Installer::postUpdate",
             "composer dump-autoload -a",
             "rm -rf vendor/",
             "cd simplesamlphp;composer install;composer require composer/composer:dev-master"
