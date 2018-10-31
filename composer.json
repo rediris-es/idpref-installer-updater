@@ -37,13 +37,14 @@
     },
     "scripts": {
         "post-install-cmd": [
+            "touch install.txt",
             "ComposerScript\\Installer::postInstall",
             "composer dump-autoload -a",
             "rm -rf vendor/",
             "cd simplesamlphp;composer install;composer require composer/composer:dev-master"
         ],
         "post-update-cmd": [
-        	"touch test.txt",
+        	"touch update.txt",
 		    "ComposerScript\\Installer::postUpdate",
             "composer dump-autoload -a",
             "rm -rf vendor/",

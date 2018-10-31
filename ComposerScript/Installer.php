@@ -9,23 +9,24 @@ class Installer
 
     public static function postInstall(Event $event)
     {
+    	if (file_exists('simplesamlphp')) {
+			self::rm_r('simplesamlphp');
+		}
         self::configureSimpleSAMLphp();
     }
 
     public static function postUpdate(Event $event)
     {
-        self::updateSimpleSAMLphp();
+        self::configureSimpleSAMLphp();
     }
 
     public static function updateSimpleSAMLphp(){
-    	self::copy_r("vendor/simplesamlphp/simplesamlphp", "./simplesamlphp/");
+    	self::copy_r("./vendor/simplesamlphp/simplesamlphp", "./simplesamlphp/");
     }
 
     private static function configureSimpleSAMLphp()
     {
-    	if (file_exists('simplesamlphp')) {
-			self::rm_r('simplesamlphp');
-		}
+    	
 
     	//shell_exec('composer create-project composer create-project --prefer-dist --stability=dev simplesamlphp/simplesamlphp:dev-Xnew-ui');
 		//self::rm_r('vendor');
