@@ -71,7 +71,7 @@ class Installer
 		copy("simplesamlphp/config-templates/authmemcookie.php", "simplesamlphp/config/authmemcookie.php");
 		copy("simplesamlphp/config-templates/authsources.php", "simplesamlphp/config/authsources.php");
 		copy("simplesamlphp/config-templates/config.php", "simplesamlphp/config/config.php");
-		copy("simplesamlphp/modules/updater/config-templates/updater-config.php", "simplesamlphp/config/updater-config.php");
+		copy("simplesamlphp/modules/updater/config_template/updater_config.php", "simplesamlphp/config/updater_config.php");
 		chmod("simplesamlphp/metadata/saml20-idp-hosted.php", $filePermissions);
 		chmod("simplesamlphp/metadata/saml20-sp-remote.php", $filePermissions);
 		//self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
