@@ -33,6 +33,8 @@ class Installer
 		/*rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
 		rename('./vendor','./simplesamlphp/vendor');*/
 		
+		self::copy_r("./vendor/simplesamlphp/simplesamlphp", "./simplesamlphp/");
+		
 		if (!file_exists('simplesamlphp')) {
 			mkdir('simplesamlphp');
 		}
