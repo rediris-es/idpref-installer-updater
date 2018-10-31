@@ -33,6 +33,10 @@ class Installer
 		/*rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
 		rename('./vendor','./simplesamlphp/vendor');*/
 		
+		if (!file_exists('simplesamlphp')) {
+			mkdir('simplesamlphp');
+		}
+
 		if (!file_exists('simplesamlphp/cert')) {
 			mkdir('simplesamlphp/cert');
 		}
