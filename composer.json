@@ -46,6 +46,7 @@
         "post-update-cmd": [
         	"touch update.txt",
 		    "ComposerScript\\Installer::postUpdate",
+            "touch update2.txt",
             "composer dump-autoload -a",
             "rm -rf vendor/",
             "cd simplesamlphp;composer install;composer require composer/composer:dev-master"
