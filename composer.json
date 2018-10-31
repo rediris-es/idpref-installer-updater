@@ -2,16 +2,20 @@
     "name": "rediris-es/idpref-installer-updater",
     "description": "Instalación de SimpleSAMLphp junto con los paquetes de REDIRIS para la instalación del IDP",
     "version": "v0.2",
-    "keywords": [ "saml2", "rediris","oauth","ws-federation","sp","idp", "simplesamlphp" ],
     "homepage": "https://wiki.rediris.es/SIR2/IdP_de_referencia",
     "license": "LGPL-2.1-or-later",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "keywords": [ "simplesamlphp", "RedIRIS", "SIR", "IdP", "Composer" ],
     "authors": [
         {
-            "name": "Adrian Gomez",
-            "email": "adriangomez@memorandum.net"
-        }
+            "name": "Adrián Gómez",
+            "email": "adrian.gomez@externos.rediris.es"
+        },
+        {
+            "name": "José Manuel Macías",
+            "email": "jmanuel.macias@rediris.es"
+        }   
     ],
 
     "autoload": {
