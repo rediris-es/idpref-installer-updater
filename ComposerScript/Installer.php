@@ -30,8 +30,8 @@ class Installer
 
     	//shell_exec('composer create-project composer create-project --prefer-dist --stability=dev simplesamlphp/simplesamlphp:dev-Xnew-ui');
 		//self::rm_r('vendor');
-		rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
-		rename('./vendor','./simplesamlphp/vendor');
+		/*rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
+		rename('./vendor','./simplesamlphp/vendor');*/
 		
 		if (!file_exists('simplesamlphp/cert')) {
 			mkdir('simplesamlphp/cert');
