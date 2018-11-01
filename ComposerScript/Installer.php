@@ -117,7 +117,7 @@ class Installer
 
 
 		self::chmod_r("simplesamlphp/cert", $folderPermissions);
-		self::chown_r(("composer.json", $apacheUser, $apacheGroup);
+		self::chown_r('composer.json', $apacheUser, $apacheGroup);
 		self::chown_r('simplesamlphp', $apacheUser, $apacheGroup);
 
     }
