@@ -40,30 +40,36 @@ class Installer
 		if (!file_exists('simplesamlphp')) {
 			mkdir('simplesamlphp');
 		}
-		touch("LLEGA 0");
+
 		exec('\cp -r ./vendor/simplesamlphp/simplesamlphp/* ./simplesamlphp');
-		touch("LLEGA 1");
+
 		if (!file_exists('simplesamlphp/cert')) {
 			mkdir('simplesamlphp/cert');
 		}
-		touch("LLEGA 2");
+
 		if (!file_exists('simplesamlphp/config')) {
 			mkdir('simplesamlphp/config');
 		}
-		touch("LLEGA 3");
+
 		if (!file_exists('simplesamlphp/metadata')) {
 			mkdir('simplesamlphp/metadata');
 		}
-		touch("LLEGA 4");
+
 		if (!file_exists('simplesamlphp/cache')) {
 			mkdir('simplesamlphp/cache');
 		}
-		touch("LLEGA 5");
+
+		if (!file_exists('simplesamlphp/datadir')) {
+			mkdir('simplesamlphp/datadir');
+		}
+
+
+
 		$apacheUser = exec('grep "User " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
 		$apacheGroup = exec('grep "Group " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
 		$filePermissions = octdec("0664");
 		$folderPermissions = octdec("0775");
-		touch("LLEGA 6");
+
 		copy("simplesamlphp/metadata-templates/saml20-idp-hosted.php", "simplesamlphp/metadata/saml20-idp-hosted.php");
 		copy("simplesamlphp/metadata-templates/saml20-idp-remote.php", "simplesamlphp/metadata/saml20-idp-remote.php");
 		copy("simplesamlphp/metadata-templates/saml20-sp-remote.php", "simplesamlphp/metadata/saml20-sp-remote.php");
@@ -79,15 +85,15 @@ class Installer
 		//self::copy_r("modules/sir2skin", "simplesamlphp/modules/sir2skin");
 		//self::rm_r('modules');
 		self::chmod_r("simplesamlphp/modules", $folderPermissions);
-		touch("LLEGA 7");
+
 		if (file_exists('simplesamlphp/modules/hubandspoke/default-disable')) {
 			rename('simplesamlphp/modules/hubandspoke/default-disable','simplesamlphp/modules/hubandspoke/default-enable');
 		}
-		touch("LLEGA 8");
+
 		if (file_exists('simplesamlphp/modules/exampleauth/default-disable')) {
 			unlink('simplesamlphp/modules/exampleauth/default-disable');
 		}
-		touch("LLEGA 9");
+
 		touch('simplesamlphp/modules/exampleauth/enable');
 		touch('simplesamlphp/modules/sir2skin/default-enable');
 		touch("LLEGA 10");
@@ -99,18 +105,21 @@ class Installer
 			rename('simplesamlphp/modules/updater/default-disable','simplesamlphp/modules/updater/default-enable');
 		}
 
-		touch("LLEGA 11");
+
 		self::downloadAndWriteConfig();
 		chmod("simplesamlphp/config/config.php", $filePermissions);
 		chmod("simplesamlphp/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
-		touch("LLEGA 12");
+
 		if (file_exists('simplesamlphp/modules/sir2skin/default.disable')) {
 			rename('simplesamlphp/modules/sir2skin/default.disable','simplesamlphp/modules/sir2skin/default-enable');
 		}
-		touch("LLEGA 13");
+
+
+
 		self::chmod_r("simplesamlphp/cert", $folderPermissions);
+		self::chown_r(("composer.json", $apacheUser, $apacheGroup);
 		self::chown_r('simplesamlphp', $apacheUser, $apacheGroup);
-		touch("LLEGA 14");
+
     }
 
     private static function downloadAndWriteConfig()
