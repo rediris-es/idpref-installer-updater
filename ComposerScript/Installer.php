@@ -127,6 +127,7 @@ class Installer
 
 		touch($sspDir.'/modules/exampleauth/enable');
 		touch($sspDir.'/modules/sir2skin/default-enable');
+	    	touch($sspDir.'/modules/updater/default-enable');
 
 		if (file_exists($sspDir.'/modules/sir2skin/default-disable')) {
 			rename($sspDir.'/modules/sir2skin/default-disable',$sspDir.'/modules/sir2skin/default-enable');
