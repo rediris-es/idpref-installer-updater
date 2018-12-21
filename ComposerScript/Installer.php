@@ -9,9 +9,9 @@ class Installer
 
     public static function postInstall(Event $event)
     {
-    	if (file_exists('simplesamlphp')) {
+    	/*if (file_exists('simplesamlphp')) {
 			self::rm_r('simplesamlphp');
-		}
+		}*/
         self::configureSimpleSAMLphp();
     }
 
@@ -30,39 +30,46 @@ class Installer
 
     	//shell_exec('composer create-project composer create-project --prefer-dist --stability=dev simplesamlphp/simplesamlphp:dev-Xnew-ui');
 		//self::rm_r('vendor');
-		/*rename('./vendor/simplesamlphp/simplesamlphp','./simplesamlphp');
-		rename('./vendor','./simplesamlphp/vendor');*/
+		
 		
 		//self::copy_r("./vendor/simplesamlphp/simplesamlphp", "./simplesamlphp/");
 
+		$dateString = date("YmdHis");
 
+		$sspDir = 'simplesamlphp'.$dateString;
 
-		if (!file_exists('simplesamlphp')) {
-			mkdir('simplesamlphp');
+		$configDir = "ssp-config";
+
+		//if (!file_exists('simplesamlphp')) {
+			//mkdir($sspDir);
+			rename('./vendor/simplesamlphp/simplesamlphp','./'.$sspDir);
+			rename('./vendor','./'.$sspDir.'/vendor');
+		if (!file_exists($configDir)) {
+			mkdir($configDir);
+		}
+		//}
+
+		//exec('\cp -r ./vendor/simplesamlphp/simplesamlphp/* ./'.$sspDir);
+
+		if (!file_exists($configDir.'/cert')) {
+			mkdir($configDir.'/cert');
 		}
 
-		exec('\cp -r ./vendor/simplesamlphp/simplesamlphp/* ./simplesamlphp');
-
-		if (!file_exists('simplesamlphp/cert')) {
-			mkdir('simplesamlphp/cert');
+		if (!file_exists($configDir.'/config')) {
+			mkdir($configDir.'/config');
 		}
 
-		if (!file_exists('simplesamlphp/config')) {
-			mkdir('simplesamlphp/config');
+		if (!file_exists($configDir.'/metadata')) {
+			mkdir($configDir.'/metadata');
 		}
 
-		if (!file_exists('simplesamlphp/metadata')) {
-			mkdir('simplesamlphp/metadata');
+		if (!file_exists($sspDir.'/cache')) {
+			mkdir($sspDir.'/cache');
 		}
 
-		if (!file_exists('simplesamlphp/cache')) {
-			mkdir('simplesamlphp/cache');
+		if (!file_exists($sspDir.'/datadir')) {
+			mkdir($sspDir.'/datadir');
 		}
-
-		if (!file_exists('simplesamlphp/datadir')) {
-			mkdir('simplesamlphp/datadir');
-		}
-
 
 
 		$apacheUser = exec('grep "User " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
@@ -70,60 +77,87 @@ class Installer
 		$filePermissions = octdec("0664");
 		$folderPermissions = octdec("0775");
 
-		copy("simplesamlphp/metadata-templates/saml20-idp-hosted.php", "simplesamlphp/metadata/saml20-idp-hosted.php");
-		copy("simplesamlphp/metadata-templates/saml20-idp-remote.php", "simplesamlphp/metadata/saml20-idp-remote.php");
-		copy("simplesamlphp/metadata-templates/saml20-sp-remote.php", "simplesamlphp/metadata/saml20-sp-remote.php");
-		copy("simplesamlphp/config-templates/acl.php", "simplesamlphp/config/acl.php");
-		copy("simplesamlphp/config-templates/authmemcookie.php", "simplesamlphp/config/authmemcookie.php");
-		copy("simplesamlphp/config-templates/authsources.php", "simplesamlphp/config/authsources.php");
-		copy("simplesamlphp/config-templates/config.php", "simplesamlphp/config/config.php");
-		copy("simplesamlphp/modules/updater/config_template/updater_config.php", "simplesamlphp/config/updater_config.php");
-		chmod("simplesamlphp/metadata/saml20-idp-hosted.php", $filePermissions);
-		chmod("simplesamlphp/metadata/saml20-sp-remote.php", $filePermissions);
+		copy($sspDir."/metadata-templates/saml20-idp-hosted.php", $configDir."/metadata/saml20-idp-hosted.php");
+		copy($sspDir."/metadata-templates/saml20-idp-remote.php", $configDir."/metadata/saml20-idp-remote.php");
+		copy($sspDir."/metadata-templates/saml20-sp-remote.php", $configDir."/metadata/saml20-sp-remote.php");
+		copy($sspDir."/metadata-templates/saml20-idp-hosted.php", $configDir."/metadata/saml20-idp-hosted.php");
+		copy($sspDir."/metadata-templates/saml20-idp-remote.php", $configDir."/metadata/saml20-idp-remote.php");
+		copy($sspDir."/config-templates/acl.php", $configDir."/config/acl.php");
+		copy($sspDir."/config-templates/authmemcookie.php", $configDir."/config/authmemcookie.php");
+		copy($sspDir."/config-templates/authsources.php", $configDir."/config/authsources.php");
+		copy($sspDir."/config-templates/config.php", $configDir."/config/config.php");
+		copy($sspDir."/modules/updater/config_template/updater_config.php", $configDir."/config/updater_config.php");
+		
 		//self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
 		//self::copy_r("modules/hubandspoke", "simplesamlphp/modules/hubandspoke");
 		//self::copy_r("modules/sir2skin", "simplesamlphp/modules/sir2skin");
 		//self::rm_r('modules');
-		self::chmod_r("simplesamlphp/modules", $folderPermissions);
 
-		if (file_exists('simplesamlphp/modules/hubandspoke/default-disable')) {
-			rename('simplesamlphp/modules/hubandspoke/default-disable','simplesamlphp/modules/hubandspoke/default-enable');
+		if (file_exists($sspDir.'/metadata')) {
+			self::rm_r($sspDir.'/metadata');
 		}
 
-		if (file_exists('simplesamlphp/modules/exampleauth/default-disable')) {
-			unlink('simplesamlphp/modules/exampleauth/default-disable');
+		if (file_exists($sspDir.'/cert')) {
+			self::rm_r($sspDir.'/cert');
 		}
 
-		touch('simplesamlphp/modules/exampleauth/enable');
-		touch('simplesamlphp/modules/sir2skin/default-enable');
-		touch("LLEGA 10");
-		if (file_exists('simplesamlphp/modules/sir2skin/default-disable')) {
-			rename('simplesamlphp/modules/sir2skin/default-disable','simplesamlphp/modules/sir2skin/default-enable');
+		if (file_exists($sspDir.'/config')) {
+			self::rm_r($sspDir.'/config');
 		}
 
-		if (file_exists('simplesamlphp/modules/updater/default-disable')) {
-			rename('simplesamlphp/modules/updater/default-disable','simplesamlphp/modules/updater/default-enable');
+		symlink ("/var/www/idpref-installer-updater/".$configDir."/metadata/" ,$sspDir."/metadata");
+		symlink ("/var/www/idpref-installer-updater/".$configDir."/cert/" ,$sspDir."/cert");
+		//symlink ("../".$configDir."/config/" ,$sspDir."/config");
+		symlink ("/var/www/idpref-installer-updater/".$configDir."/config/" ,$sspDir."/config");
+
+		chmod($configDir."/metadata/saml20-idp-hosted.php", $filePermissions);
+		chmod($configDir."/metadata/saml20-sp-remote.php", $filePermissions);
+
+		self::chmod_r($sspDir."/modules", $folderPermissions);
+
+		self::downloadAndWriteConfig($configDir."/config/config.php");
+
+		if (file_exists($sspDir.'/modules/hubandspoke/default-disable')) {
+			rename($sspDir.'/modules/hubandspoke/default-disable',$sspDir.'/modules/hubandspoke/default-enable');
 		}
 
-
-		self::downloadAndWriteConfig();
-		chmod("simplesamlphp/config/config.php", $filePermissions);
-		chmod("simplesamlphp/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
-
-		if (file_exists('simplesamlphp/modules/sir2skin/default.disable')) {
-			rename('simplesamlphp/modules/sir2skin/default.disable','simplesamlphp/modules/sir2skin/default-enable');
+		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
+			unlink($sspDir.'/modules/exampleauth/default-disable');
 		}
 
+		touch($sspDir.'/modules/exampleauth/enable');
+		touch($sspDir.'/modules/sir2skin/default-enable');
 
+		if (file_exists($sspDir.'/modules/sir2skin/default-disable')) {
+			rename($sspDir.'/modules/sir2skin/default-disable',$sspDir.'/modules/sir2skin/default-enable');
+		}
 
-		self::chmod_r("simplesamlphp/cert", $folderPermissions);
+		if (file_exists($sspDir.'/modules/updater/default-disable')) {
+			rename($sspDir.'/modules/updater/default-disable',$sspDir.'/modules/updater/default-enable');
+		}
+
+		chmod($configDir."/config/config.php", $filePermissions);
+		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
+
+		if (file_exists($sspDir.'/modules/sir2skin/default.disable')) {
+			rename($sspDir.'/modules/sir2skin/default.disable',$sspDir.'/modules/sir2skin/default-enable');
+		}
+
+		self::chmod_r($configDir."/cert", $folderPermissions);
 		chown('composer.json', $apacheUser);
 		chgrp('composer.json', $apacheGroup);
-		self::chown_r('simplesamlphp', $apacheUser, $apacheGroup);
+		self::chown_r($sspDir, $apacheUser, $apacheGroup);
+		self::chown_r($configDir, $apacheUser, $apacheGroup);
+
+		if(file_exists("./simplesamlphp")){
+			unlink("./simplesamlphp");
+		}
+
+		symlink ($sspDir ,"./simplesamlphp");
 
     }
 
-    private static function downloadAndWriteConfig()
+    private static function downloadAndWriteConfig($configPath)
     {
 
 		$ch = curl_init();
@@ -135,7 +169,7 @@ class Installer
 		
 		curl_close ($ch);
 
-		file_put_contents('simplesamlphp/config/config.php', $result);
+		file_put_contents($configPath, $result);
 
     }
 
@@ -177,8 +211,8 @@ class Installer
 	                self::chown_r($typepath, $uid, $gid);
 	            }
 
-	            chown($typepath, $uid);
-	            chgrp($typepath, $gid);
+            	chown($typepath, $uid);
+            	chgrp($typepath, $gid);
 
 	        }
 	    }
