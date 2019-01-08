@@ -71,6 +71,10 @@ class Installer
 			mkdir($sspDir.'/datadir');
 		}
 
+		if (!file_exists($sspDir.'/log')) {
+			mkdir($sspDir.'/log');
+		}
+
 
 		$apacheUser = exec('grep "User " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
 		$apacheGroup = exec('grep "Group " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
@@ -119,30 +123,31 @@ class Installer
 
 		if (file_exists($sspDir.'/modules/hubandspoke/default-disable')) {
 			rename($sspDir.'/modules/hubandspoke/default-disable',$sspDir.'/modules/hubandspoke/default-enable');
+		}else if(!file_exists($sspDir.'/modules/hubandspoke/default-enable')){
+			touch($sspDir.'/modules/hubandspoke/default-enable');
 		}
 
 		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
 			unlink($sspDir.'/modules/exampleauth/default-disable');
+		}else if(!file_exists($sspDir.'/modules/exampleauth/default-enable')){
+			touch($sspDir.'/modules/exampleauth/default-enable');
 		}
-
-		touch($sspDir.'/modules/exampleauth/enable');
-		touch($sspDir.'/modules/sir2skin/default-enable');
-	    	touch($sspDir.'/modules/updater/default-enable');
 
 		if (file_exists($sspDir.'/modules/sir2skin/default-disable')) {
 			rename($sspDir.'/modules/sir2skin/default-disable',$sspDir.'/modules/sir2skin/default-enable');
+		}else if(!file_exists($sspDir.'/modules/sir2skin/default-enable')){
+			touch($sspDir.'/modules/sir2skin/default-enable');
 		}
 
 		if (file_exists($sspDir.'/modules/updater/default-disable')) {
 			rename($sspDir.'/modules/updater/default-disable',$sspDir.'/modules/updater/default-enable');
+		}else if(!file_exists($sspDir.'/modules/updater/default-enable')){
+			touch($sspDir.'/modules/updater/default-enable');
 		}
 
 		chmod($configDir."/config/config.php", $filePermissions);
 		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
 
-		if (file_exists($sspDir.'/modules/sir2skin/default.disable')) {
-			rename($sspDir.'/modules/sir2skin/default.disable',$sspDir.'/modules/sir2skin/default-enable');
-		}
 
 		self::chmod_r($configDir."/cert", $folderPermissions);
 		chown('composer.json', $apacheUser);
