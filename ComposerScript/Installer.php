@@ -150,10 +150,10 @@ class Installer
 
 
 		self::chmod_r($configDir."/cert", $folderPermissions);
-		chown('composer.json', $apacheUser);
-		chgrp('composer.json', $apacheGroup);
-		self::chown_r($sspDir, $apacheUser, $apacheGroup);
-		self::chown_r($configDir, $apacheUser, $apacheGroup);
+		//chown('composer.json', $apacheUser);
+		//chgrp('composer.json', $apacheGroup);
+		//self::chown_r($sspDir, $apacheUser, $apacheGroup);
+		//self::chown_r($configDir, $apacheUser, $apacheGroup);
 
 		if(file_exists("./simplesamlphp")){
 			unlink("./simplesamlphp");
