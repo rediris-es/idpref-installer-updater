@@ -149,7 +149,7 @@ class Installer
 		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
 
 
-		self::chmod_r($configDir."/cert", $folderPermissions);
+		//self::chmod_r($configDir."/cert", $folderPermissions);
 		//chown('composer.json', $apacheUser);
 		chgrp('composer.json', $apacheGroup);
 		self::chown_r($sspDir, $apacheUser, $apacheGroup);
