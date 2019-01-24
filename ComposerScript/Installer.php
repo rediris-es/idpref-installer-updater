@@ -110,7 +110,7 @@ class Installer
 		}
 
 		symlink ("../".$configDir."/metadata/" ,$sspDir."/metadata");
-		symlink ($"../".configDir."/cert/" ,$sspDir."/cert");
+		symlink ("../".configDir."/cert/" ,$sspDir."/cert");
 		symlink ("../".$configDir."/config/" ,$sspDir."/config");
 
 		chmod($configDir."/metadata/saml20-idp-hosted.php", $filePermissions);
