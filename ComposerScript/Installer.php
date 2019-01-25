@@ -146,7 +146,6 @@ class Installer
 
 		chmod($configDir."/config/config.php", $filePermissions);
 		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
-		symlink ($sspDir ,"./simplesamlphp");
 
 		self::chmod_r($configDir."/cert", $folderPermissions);
 		chown('composer.json', $apacheUser);
@@ -157,7 +156,8 @@ class Installer
 		if(file_exists("./simplesamlphp")){
 			unlink("./simplesamlphp");
 		}
-
+	    
+		symlink ($sspDir ,"./simplesamlphp");
 		
 
     }
