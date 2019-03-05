@@ -75,7 +75,6 @@ class Installer
 			mkdir($sspDir.'/log');
 		}
 
-
 		$apacheUser = exec('grep "User " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
 		$apacheGroup = exec('grep "Group " `find /etc/ -name httpd.conf` | cut -d " " -f 2');
 		$filePermissions = octdec("0664");
@@ -120,30 +119,6 @@ class Installer
 
 		self::downloadAndWriteConfig($configDir."/config/config.php");
 
-		if (file_exists($sspDir.'/modules/hubandspoke/default-disable')) {
-			rename($sspDir.'/modules/hubandspoke/default-disable',$sspDir.'/modules/hubandspoke/default-enable');
-		}else if(!file_exists($sspDir.'/modules/hubandspoke/default-enable')){
-			touch($sspDir.'/modules/hubandspoke/default-enable');
-		}
-
-		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
-			unlink($sspDir.'/modules/exampleauth/default-disable');
-		}else if(!file_exists($sspDir.'/modules/exampleauth/default-enable')){
-			touch($sspDir.'/modules/exampleauth/default-enable');
-		}
-
-		if (file_exists($sspDir.'/modules/sir2skin/default-disable')) {
-			rename($sspDir.'/modules/sir2skin/default-disable',$sspDir.'/modules/sir2skin/default-enable');
-		}else if(!file_exists($sspDir.'/modules/sir2skin/default-enable')){
-			touch($sspDir.'/modules/sir2skin/default-enable');
-		}
-
-		if (file_exists($sspDir.'/modules/updater/default-disable')) {
-			rename($sspDir.'/modules/updater/default-disable',$sspDir.'/modules/updater/default-enable');
-		}else if(!file_exists($sspDir.'/modules/updater/default-enable')){
-			touch($sspDir.'/modules/updater/default-enable');
-		}
-
 		chmod($configDir."/config/config.php", $filePermissions);
 		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
 
@@ -159,6 +134,38 @@ class Installer
 	    
 		symlink ($sspDir ,"./simplesamlphp");
 		
+		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
+			unlink($sspDir.'/modules/exampleauth/default-disable');
+		}
+
+		if (file_exists($sspDir.'/modules/updater/default-disable')) {
+			unlink($sspDir.'/modules/updater/default-disable');
+		}
+
+		if (file_exists($sspDir.'/modules/idpinstaller/default-disable')) {
+			unlink($sspDir.'/modules/idpinstaller/default-disable');
+		}
+
+		if (file_exists($sspDir.'/modules/sir2skin/default-disable')) {
+			unlink($sspDir.'/modules/sir2skin/default-disable');
+		}
+
+		if (!file_exists($sspDir.'/modules/updater/default-enable')) {
+			touch($sspDir.'/modules/updater/default-enable');
+		}
+
+		if (!file_exists($sspDir.'/modules/idpinstaller/default-enable')) {
+			touch($sspDir.'/modules/idpinstaller/default-enable');
+		}
+
+		if (!file_exists($sspDir.'/modules/exampleauth/default-enable')) {
+			touch($sspDir.'/modules/exampleauth/default-enable');
+		}
+
+		if (!file_exists($sspDir.'/modules/sir2skin/default-enable')) {
+			touch($sspDir.'/modules/sir2skin/default-enable');
+		}
+
 
     }
 
