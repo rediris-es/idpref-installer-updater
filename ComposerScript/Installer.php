@@ -122,18 +122,6 @@ class Installer
 		chmod($configDir."/config/config.php", $filePermissions);
 		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
 
-		self::chmod_r($configDir."/cert", $folderPermissions);
-		chown('composer.json', $apacheUser);
-		chgrp('composer.json', $apacheGroup);
-		self::chown_r($sspDir, $apacheUser, $apacheGroup);
-		self::chown_r($configDir, $apacheUser, $apacheGroup);
-
-		if(file_exists("./simplesamlphp")){
-			unlink("./simplesamlphp");
-		}
-	    
-		symlink ($sspDir ,"./simplesamlphp");
-		
 		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
 			unlink($sspDir.'/modules/exampleauth/default-disable');
 		}
@@ -166,6 +154,20 @@ class Installer
 			touch($sspDir.'/modules/sir2skin/default-enable');
 		}
 
+
+		self::chmod_r($configDir."/cert", $folderPermissions);
+		chown('composer.json', $apacheUser);
+		chgrp('composer.json', $apacheGroup);
+		self::chown_r($sspDir, $apacheUser, $apacheGroup);
+		self::chown_r($configDir, $apacheUser, $apacheGroup);
+
+		if(file_exists("./simplesamlphp")){
+			unlink("./simplesamlphp");
+		}
+	    
+		symlink ($sspDir ,"./simplesamlphp");
+		
+		
 
     }
 
