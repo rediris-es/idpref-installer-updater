@@ -38,11 +38,13 @@
     "scripts": {
         "post-install-cmd": [
             "ComposerScript\\Installer::postInstall",
-            "cd simplesamlphp;composer install"
+            "cd simplesamlphp;composer install",
+	    "composer require composer/composer:dev-master"
         ],
         "post-update-cmd": [
-		    "ComposerScript\\Installer::postUpdate",
-            "cd simplesamlphp;composer install"
+	    "ComposerScript\\Installer::postUpdate",
+            "cd simplesamlphp;composer install",
+            "composer require composer/composer:dev-master"
         ]
     }
 }
