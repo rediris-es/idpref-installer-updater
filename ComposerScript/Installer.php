@@ -138,6 +138,10 @@ class Installer
 			unlink($sspDir.'/modules/sir2skin/default-disable');
 		}
 
+		if (file_exists($sspDir.'/modules/sqlauth/default-disable')) {
+			unlink($sspDir.'/modules/sqlauth/default-disable');
+		}
+
 		if (!file_exists($sspDir.'/modules/updater/default-enable')) {
 			touch($sspDir.'/modules/updater/default-enable');
 		}
@@ -152,6 +156,10 @@ class Installer
 
 		if (!file_exists($sspDir.'/modules/sir2skin/default-enable')) {
 			touch($sspDir.'/modules/sir2skin/default-enable');
+		}
+
+		if (!file_exists($sspDir.'/modules/sqlauth/default-enable')) {
+			touch($sspDir.'/modules/sqlauth/default-enable');
 		}
 
 
