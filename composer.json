@@ -25,7 +25,7 @@
     },
     "require": {
         "php": ">=5.4",
-        "simplesamlphp/simplesamlphp": "*",
+        "simplesamlphp/simplesamlphp": "17.1",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "rediris-es/simplesamlphp-module-updater": "dev-master",
