@@ -108,9 +108,9 @@ class Installer
 			self::rm_r($sspDir.'/config');
 		}
 
-		symlink ("../".$configDir."/metadata/" ,$sspDir."/metadata");
-		symlink ("../".$configDir."/cert/" ,$sspDir."/cert");
-		symlink ("../".$configDir."/config/" ,$sspDir."/config");
+		symlink(realpath("../".$configDir."/metadata/" ,$sspDir."/metadata"));
+		symlink(realpath("../".$configDir."/cert/" ,$sspDir."/cert"));
+		symlink(realpath("../".$configDir."/config/" ,$sspDir."/config"));
 
 		chmod($configDir."/metadata/saml20-idp-hosted.php", $filePermissions);
 		chmod($configDir."/metadata/saml20-sp-remote.php", $filePermissions);
@@ -173,7 +173,7 @@ class Installer
 			unlink("./simplesamlphp");
 		}
 	    
-		symlink ($sspDir ,"./simplesamlphp");
+		symlink(realpath($sspDir ,"./simplesamlphp"));
 		
 		
 
