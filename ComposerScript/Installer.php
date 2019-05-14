@@ -160,14 +160,18 @@ class Installer
 			self::chown_r($sspDir, $apacheUser, $apacheGroup);
 			self::chown_r($configDir, $apacheUser, $apacheGroup);
 		}
-
-		if(file_exists("./simplesamlphp")){
-			unlink("./simplesamlphp");
-		}
 	    
-		symlink(realpath($sspDir) ,"simplesamlphp");
-		
+		if(file_exists("simplesamlphp")){
+			exec("rm simplesamlphp");
+		}
 
+		symlink(realpath($sspDir) ,"simplesamlphp2");		
+		rename("simplesamlphp2", "simplesamlphp");
+
+		if(file_exists("composer.back.json")){
+			rename('composer.back.json', 'composer.json');
+
+		}
     }
 
     private static function downloadAndWriteConfig($configPath)
