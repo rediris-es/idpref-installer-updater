@@ -160,18 +160,26 @@ class Installer
 			self::chown_r($sspDir, $apacheUser, $apacheGroup);
 			self::chown_r($configDir, $apacheUser, $apacheGroup);
 		}
-	    
-		if(file_exists("simplesamlphp")){
+
+		/*if(file_exists("simplesamlphp")){
+			touch("llega3.txt");
 			exec("rm simplesamlphp");
+		}*/
+
+		if(file_exists("simplesamlphp")){
+			$currentLinkPath = readlink(realpath("simplesamlphp"));
+			$currentLinkPath = str_replace('\\', '/', $currentLinkPath);
+			$partsCurrentLinkPath = explode("/", $currentLinkPath);
+			rename("simplesamlphp", "link_".$partsCurrentLinkPath[count($partsCurrentLinkPath)-1]);
 		}
 
-		symlink(realpath($sspDir) ,"simplesamlphp2");		
-		rename("simplesamlphp2", "simplesamlphp");
+		symlink(realpath($sspDir) ,"simplesamlphp");	
 
 		if(file_exists("composer.back.json")){
 			rename('composer.back.json', 'composer.json');
-
 		}
+
+		return true;
     }
 
     private static function downloadAndWriteConfig($configPath)
