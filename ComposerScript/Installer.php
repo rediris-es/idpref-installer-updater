@@ -87,17 +87,32 @@ class Installer
 		$filePermissions = octdec("0664");
 		$folderPermissions = octdec("0775");
 
-		copy($sspDir."/metadata-templates/saml20-idp-hosted.php", $configDir."/metadata/saml20-idp-hosted.php");
-		copy($sspDir."/metadata-templates/saml20-idp-remote.php", $configDir."/metadata/saml20-idp-remote.php");
-		copy($sspDir."/metadata-templates/saml20-sp-remote.php", $configDir."/metadata/saml20-sp-remote.php");
-		copy($sspDir."/metadata-templates/saml20-idp-hosted.php", $configDir."/metadata/saml20-idp-hosted.php");
-		copy($sspDir."/metadata-templates/saml20-idp-remote.php", $configDir."/metadata/saml20-idp-remote.php");
-		copy($sspDir."/config-templates/acl.php", $configDir."/config/acl.php");
-		copy($sspDir."/config-templates/authmemcookie.php", $configDir."/config/authmemcookie.php");
-		copy($sspDir."/config-templates/authsources.php", $configDir."/config/authsources.php");
-		copy($sspDir."/config-templates/config.php", $configDir."/config/config.php");
-		copy($sspDir."/modules/updater/config_template/updater_config.php", $configDir."/config/updater_config.php");
+		if (!file_exists($configDir."/metadata/saml20-idp-hosted.php")) {
+			copy($sspDir."/metadata-templates/saml20-idp-hosted.php", $configDir."/metadata/saml20-idp-hosted.php");
+		}
 		
+		if (!file_exists($configDir."/metadata/saml20-idp-remote.php")) {
+			copy($sspDir."/metadata-templates/saml20-idp-remote.php", $configDir."/metadata/saml20-idp-remote.php");
+		}
+		if (!file_exists($configDir."/metadata/saml20-sp-remote.php")) {
+			copy($sspDir."/metadata-templates/saml20-sp-remote.php", $configDir."/metadata/saml20-sp-remote.php");
+		}
+		if (!file_exists($configDir."/config/acl.php")) {
+			copy($sspDir."/config-templates/acl.php", $configDir."/config/acl.php");
+		}
+		if (!file_exists($configDir."/config/authmemcookie.php")) {
+			copy($sspDir."/config-templates/authmemcookie.php", $configDir."/config/authmemcookie.php");
+		}
+		if (!file_exists($configDir."/config/authsources.php")) {
+			copy($sspDir."/config-templates/authsources.php", $configDir."/config/authsources.php");
+		}
+		if (!file_exists($configDir."/config/config.php")) {
+			copy($sspDir."/config-templates/config.php", $configDir."/config/config.php");
+			self::downloadAndWriteConfig($configDir."/config/config.php");
+		}
+		if (!file_exists($configDir."/config/updater_config.php")) {
+			copy($sspDir."/modules/updater/config_template/updater_config.php", $configDir."/config/updater_config.php");
+		}
 		//self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
 		//self::copy_r("modules/hubandspoke", "simplesamlphp/modules/hubandspoke");
 		//self::copy_r("modules/sir2skin", "simplesamlphp/modules/sir2skin");
@@ -124,7 +139,6 @@ class Installer
 
 		self::chmod_r($sspDir."/modules", $folderPermissions);
 
-		self::downloadAndWriteConfig($configDir."/config/config.php");
 
 		if (file_exists($sspDir.'/modules/hubandspoke/default-disable')) {
 			rename($sspDir.'/modules/hubandspoke/default-disable',$sspDir.'/modules/hubandspoke/default-enable');
