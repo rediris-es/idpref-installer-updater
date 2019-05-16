@@ -183,7 +183,7 @@ class Installer
 		}*/
 
 		if(file_exists("simplesamlphp")){
-			$currentLinkPath = readlink(realpath("simplesamlphp"));
+			$currentLinkPath = realpath("simplesamlphp");
 			$currentLinkPath = str_replace('\\', '/', $currentLinkPath);
 			$partsCurrentLinkPath = explode("/", $currentLinkPath);
 			rename("simplesamlphp", "link_".$partsCurrentLinkPath[count($partsCurrentLinkPath)-1]);
