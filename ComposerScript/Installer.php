@@ -171,6 +171,8 @@ class Installer
 		if(!in_array(PHP_OS, $windows_os)){
 			chown('composer.json', $apacheUser);
 			chgrp('composer.json', $apacheGroup);
+			chown('composer.lock', $apacheUser);
+			chgrp('composer.lock', $apacheGroup);
 			self::chown_r($sspDir, $apacheUser, $apacheGroup);
 			self::chown_r($configDir, $apacheUser, $apacheGroup);
 		}
