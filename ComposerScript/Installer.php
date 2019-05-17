@@ -152,6 +152,12 @@ class Installer
 			touch($sspDir.'/modules/exampleauth/default-enable');
 		}
 
+		if (file_exists($sspDir.'/modules/sqlauth/default-disable')) {
+			unlink($sspDir.'/modules/sqlauth/default-disable');
+		}else if(!file_exists($sspDir.'/modules/sqlauth/default-enable')){
+			touch($sspDir.'/modules/sqlauth/default-enable');
+		}
+
 		if (file_exists($sspDir.'/modules/sir2skin/default-disable')) {
 			rename($sspDir.'/modules/sir2skin/default-disable',$sspDir.'/modules/sir2skin/default-enable');
 		}else if(!file_exists($sspDir.'/modules/sir2skin/default-enable')){
