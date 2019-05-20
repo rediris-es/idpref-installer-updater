@@ -147,13 +147,13 @@ class Installer
 		}
 
 		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
-			unlink($sspDir.'/modules/exampleauth/default-disable');
+			rename($sspDir.'/modules/exampleauth/default-disable');
 		}else if(!file_exists($sspDir.'/modules/exampleauth/default-enable')){
 			touch($sspDir.'/modules/exampleauth/default-enable');
 		}
 
 		if (file_exists($sspDir.'/modules/sqlauth/default-disable')) {
-			unlink($sspDir.'/modules/sqlauth/default-disable');
+			rename($sspDir.'/modules/sqlauth/default-disable');
 		}else if(!file_exists($sspDir.'/modules/sqlauth/default-enable')){
 			touch($sspDir.'/modules/sqlauth/default-enable');
 		}
