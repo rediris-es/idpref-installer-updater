@@ -26,7 +26,7 @@
     "require": {
         "php": ">=5.4",
         "simplesamlphp/simplesamlphp": "*",
-        "rediris-es/simplesamlphp-module-idpinstaller": "*",
+        "rediris-es/simplesamlphp-module-idpinstaller": "dev-wamp",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "rediris-es/simplesamlphp-module-updater": "dev-master",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
