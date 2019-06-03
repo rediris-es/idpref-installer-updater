@@ -107,12 +107,12 @@ class Installer
 			copy($sspDir."/config-templates/authsources.php", $configDir."/config/authsources.php");
 		}
 		if (!file_exists($configDir."/config/config.php")) {
-			copy($sspDir."/config-templates/config.php", $configDir."/config/config.php");
-			self::downloadAndWriteConfig($configDir."/config/config.php");
+			copy($sspDir."/modules/idpinstaller/config-templates/config.php", $configDir."/config/config.php");
 		}
 		if (!file_exists($configDir."/config/updater_config.php")) {
 			copy($sspDir."/modules/updater/config_template/updater_config.php", $configDir."/config/updater_config.php");
 		}
+		
 		//self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
 		//self::copy_r("modules/hubandspoke", "simplesamlphp/modules/hubandspoke");
 		//self::copy_r("modules/sir2skin", "simplesamlphp/modules/sir2skin");
@@ -147,7 +147,8 @@ class Installer
 		}
 
 		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
-			rename($sspDir.'/modules/exampleauth/default-disable',$sspDir.'/modules/exampleauth/default-enable');
+			rename($sspDir.'/modules/exampleauth/default-disable',$sspDir.'/modules/exampleauth
+				/default-enable');
 		}else if(!file_exists($sspDir.'/modules/exampleauth/default-enable')){
 			touch($sspDir.'/modules/exampleauth/default-enable');
 		}
@@ -172,6 +173,7 @@ class Installer
 
 		chmod($configDir."/config/config.php", $filePermissions);
 		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
+		chmod($sspDir."/modules/idpinstaller/lib/makeCert.bat", $folderPermissions);
 
 		self::chmod_r($configDir."/cert", $folderPermissions);
 		if(!in_array(PHP_OS, $windows_os)){
@@ -202,22 +204,6 @@ class Installer
 		}
 
 		return true;
-    }
-
-    private static function downloadAndWriteConfig($configPath)
-    {
-
-		$ch = curl_init();
-
-		curl_setopt($ch, CURLOPT_URL, "http://www.rediris.es/sir2/IdP/install/config.php.txt");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-		$result = curl_exec($ch);
-		
-		curl_close ($ch);
-
-		file_put_contents($configPath, $result);
-
     }
 
     private static function chmod_r($path, $filemode) 
