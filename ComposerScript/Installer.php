@@ -147,8 +147,7 @@ class Installer
 		}
 
 		if (file_exists($sspDir.'/modules/exampleauth/default-disable')) {
-			rename($sspDir.'/modules/exampleauth/default-disable',$sspDir.'/modules/exampleauth
-				/default-enable');
+			rename($sspDir.'/modules/exampleauth/default-disable',$sspDir.'/modules/exampleauth/default-enable');
 		}else if(!file_exists($sspDir.'/modules/exampleauth/default-enable')){
 			touch($sspDir.'/modules/exampleauth/default-enable');
 		}
