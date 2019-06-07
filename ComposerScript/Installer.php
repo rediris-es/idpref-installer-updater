@@ -90,7 +90,6 @@ class Installer
 		if (!file_exists($configDir."/metadata/saml20-idp-hosted.php")) {
 			copy($sspDir."/metadata-templates/saml20-idp-hosted.php", $configDir."/metadata/saml20-idp-hosted.php");
 		}
-		
 		if (!file_exists($configDir."/metadata/saml20-idp-remote.php")) {
 			copy($sspDir."/metadata-templates/saml20-idp-remote.php", $configDir."/metadata/saml20-idp-remote.php");
 		}
@@ -107,7 +106,7 @@ class Installer
 			copy($sspDir."/config-templates/authsources.php", $configDir."/config/authsources.php");
 		}
 		if (!file_exists($configDir."/config/config.php")) {
-			copy($sspDir."/modules/idpinstaller/config-templates/config.php", $configDir."/config/config.php");
+			copy($sspDir."/config-templates/config.php", $configDir."/config/config.php");
 		}
 		if (!file_exists($configDir."/config/updater_config.php")) {
 			copy($sspDir."/modules/updater/config_template/updater_config.php", $configDir."/config/updater_config.php");
