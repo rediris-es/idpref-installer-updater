@@ -171,7 +171,7 @@ class Installer
 
 		chmod($configDir."/config/config.php", $filePermissions);
 		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
-		chmod($sspDir."/modules/idpinstaller/lib/makeCert.bat", $folderPermissions);
+		//chmod($sspDir."/modules/idpinstaller/lib/makeCert.bat", $folderPermissions);
 
 		self::chmod_r($configDir."/cert", $folderPermissions);
 		if(!in_array(PHP_OS, $windows_os)){
