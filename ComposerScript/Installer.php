@@ -20,10 +20,6 @@ class Installer
         self::configureSimpleSAMLphp();
     }
 
-    public static function updateSimpleSAMLphp(){
-    	self::copy_r("./vendor/simplesamlphp/simplesamlphp", "./simplesamlphp/");
-    }
-
     private static function configureSimpleSAMLphp()
     {
     	
@@ -137,8 +133,14 @@ class Installer
 		symlink (realpath($configDir."/cert/"), $sspDir."/cert");
 		symlink (realpath($configDir."/config/"), $sspDir."/config");
 
-		chmod($configDir."/metadata/saml20-idp-hosted.php", $filePermissions);
-		chmod($configDir."/metadata/saml20-sp-remote.php", $filePermissions);
+
+		if (file_exists($configDir."/metadata/saml20-idp-hosted.php")) {
+			chmod($configDir."/metadata/saml20-idp-hosted.php", $filePermissions);
+		}
+
+		if (file_exists($configDir."/metadata/saml20-sp-remote.php")) {
+			chmod($configDir."/metadata/saml20-sp-remote.php", $filePermissions);
+		}
 
 		self::chmod_r($sspDir."/modules", $folderPermissions);
 
@@ -173,9 +175,17 @@ class Installer
 			touch($sspDir.'/modules/updater/default-enable');
 		}
 
-		chmod($configDir."/config/config.php", $filePermissions);
-		chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
-		//chmod($sspDir."/modules/idpinstaller/lib/makeCert.bat", $folderPermissions);
+		if (file_exists($configDir.'/config/config.php')) {
+			chmod($configDir."/config/config.php", $filePermissions);
+		}
+
+		if (file_exists($sspDir.'/modules/idpinstaller/lib/makeCert.sh')) {
+			chmod($sspDir."/modules/idpinstaller/lib/makeCert.sh", $folderPermissions);
+		}
+
+		if (file_exists($sspDir.'/modules/idpinstaller/lib/makeCert.bat')) {
+			chmod($sspDir."/modules/idpinstaller/lib/makeCert.bat", $folderPermissions);
+		}
 
 		self::chmod_r($configDir."/cert", $folderPermissions);
 		if(!in_array(PHP_OS, $windows_os)){
