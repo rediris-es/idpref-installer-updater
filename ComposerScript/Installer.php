@@ -106,10 +106,14 @@ class Installer
 			copy($sspDir."/config-templates/authsources.php", $configDir."/config/authsources.php");
 		}
 		if (!file_exists($configDir."/config/config.php")) {
-			copy($sspDir."/config-templates/config.php", $configDir."/config/config.php");
-		}
-		if (!file_exists($configDir."/config/updater_config.php")) {
-			copy($sspDir."/modules/updater/config_template/updater_config.php", $configDir."/config/updater_config.php");
+
+			if(file_exists($sspDir."/modules/idpinstaller/config-templates/config.php")){
+				copy($sspDir."/modules/idpinstaller/config-templates/config.php", $configDir."/config/config.php");
+			}else{
+				copy($sspDir."/config-templates/config.php", $configDir."/config/config.php");
+				self::downloadAndWriteConfig($configDir."/config/config.php");
+			}
+			
 		}
 		
 		//self::copy_r("modules/idpinstaller", "simplesamlphp/modules/idpinstaller");
@@ -202,6 +206,17 @@ class Installer
 		}
 
 		return true;
+    }
+
+    private static function downloadAndWriteConfig($configPath)
+    {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "http://www.rediris.es/sir2/IdP/install/config.php.txt");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$result = curl_exec($ch);
+		
+		curl_close ($ch);
+		file_put_contents($configPath, $result);
     }
 
     private static function chmod_r($path, $filemode) 
