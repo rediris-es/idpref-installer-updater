@@ -1,7 +1,7 @@
 {
     "name": "rediris-es/idpref-installer-updater",
     "description": "Instalación de SimpleSAMLphp junto con los paquetes de REDIRIS para la instalación del IDP",
-    "version": "v0.2",
+    "version": "v0.3",
     "homepage": "https://wiki.rediris.es/SIR2/IdP_de_referencia",
     "license": "LGPL-2.1-or-later",
     "minimum-stability": "dev",
@@ -25,7 +25,7 @@
     },
     "require": {
         "php": ">=5.4",
-        "simplesamlphp/simplesamlphp": "1.15.4",
+        "simplesamlphp/simplesamlphp": "1.17.5",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
         "rediris-es/simplesamlphp-module-updater": "dev-master",
