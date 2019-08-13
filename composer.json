@@ -25,10 +25,10 @@
     },
     "require": {
         "php": ">=5.4",
-        "simplesamlphp/simplesamlphp": "1.15.4",
+        "simplesamlphp/simplesamlphp": "*",
         "rediris-es/simplesamlphp-module-idpinstaller": "*",
         "rediris-es/simplesamlphp-module-sir2skin": "*",
-        "rediris-es/simplesamlphp-module-updater": "dev-master",
+        "rediris-es/simplesamlphp-module-updater": "*",
         "mimaen/simplesamlphp-module-hubandspoke": "dev-master"
     },
     "support": {
