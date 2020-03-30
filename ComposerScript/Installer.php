@@ -96,7 +96,7 @@ class Installer
 			copy($sspDir."/config-templates/acl.php", $configDir."/config/acl.php");
 		}
 		if (!file_exists($configDir."/config/authmemcookie.php")) {
-			copy($sspDir."/config-templates/authmemcookie.php", $configDir."/config/authmemcookie.php");
+			copy($sspDir."/modules/memcookie/config-templates/authmemcookie.php", $configDir."/config/authmemcookie.php");
 		}
 		if (!file_exists($configDir."/config/authsources.php")) {
 			copy($sspDir."/config-templates/authsources.php", $configDir."/config/authsources.php");
